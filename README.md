@@ -3,7 +3,7 @@
 
 ## Done
 * [**star_remind**](#star_remind) - 有人在github上star你的项目，立刻发送邮件提醒自己
-* **[CleanMoviePrefix](#cleanmovieprefix)** - 清洗电影文件广告前缀 
+* [**CleanMoviePrefix**](#cleanmovieprefix---清洗电影文件广告前缀) - 清洗电影文件广告前缀 
 
 ##star_remind
 有人在github上star你的项目，立刻发送邮件提醒自己
@@ -21,7 +21,7 @@
 linux运行截图  
 ![](./screenshots/3.png)
 
-##CleanMoviePrefix
+##CleanMoviePrefix - 清洗电影文件广告前缀
 清洗电影文件广告前缀
 
 双击运行程序，清洗当前目录下电影文件的广告前缀
