@@ -16,4 +16,13 @@
 linux运行截图  
 ![](./screenshots/3.png)
 
+## CleanMoviePrefix - 清洗电影文件广告前缀
+双击运行程序，清洗当前目录下电影文件的广告前缀
+
+清洗前：  
+![](./screenshots/4.png)
+
+清洗后：  
+![](./screenshots/5.png)
+
 * 测试环境为**windows/linux + python2.7**
