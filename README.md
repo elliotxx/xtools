@@ -2,11 +2,11 @@
 平时写的各种小工具集合 - 想起来就更新
 
 ## Done
-* **[star_remind](#star_remind---有人在github上star你的项目立刻发送邮件提醒自己)** - 有人在github上star你的项目，立刻发送邮件提醒自己
-* [CleanMoviePrefix](#CleanMoviePrefix---清洗电影文件广告前缀) - 清洗电影文件广告前缀
-* [abc](#xtools "abc") 
+* **[star_remind](#star_remind)** - 有人在github上star你的项目，立刻发送邮件提醒自己
+* **[CleanMoviePrefix](#CleanMoviePrefix)** - 清洗电影文件广告前缀 
 
-## star_remind - 有人在github上star你的项目，立刻发送邮件提醒自己
+## star_remind
+有人在github上star你的项目，立刻发送邮件提醒自己
 
 模拟登陆github + 抓取star动态 + 邮件发送
 
@@ -21,7 +21,9 @@
 linux运行截图  
 ![](./screenshots/3.png)
 
-## CleanMoviePrefix - 清洗电影文件广告前缀
+## CleanMoviePrefix
+清洗电影文件广告前缀
+
 双击运行程序，清洗当前目录下电影文件的广告前缀
 
 清洗前：  
