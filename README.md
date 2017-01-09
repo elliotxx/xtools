@@ -1,10 +1,10 @@
-# xtools
+﻿# xtools
 平时写的各种小工具集合 - 想起来就更新
 
 ## Done
 * [**star_remind**](#star_remind---有人在github上star你的项目，立刻发送邮件提醒自己) - 有人在github上star你的项目，立刻发送邮件提醒自己
 * [**CleanMoviePrefix**](#cleanmovieprefix---清洗电影文件广告前缀) - 清洗电影文件广告前缀 
-* [**put\_oss/get\_oss**](#put\_oss/get\_oss---阿里云OSS上传/下载文件脚本) - 阿里云OSS上传/下载文件脚本
+* [**put\_oss/get\_oss**](#put_ossget_oss---阿里云OSS上传/下载文件脚本) - 阿里云OSS上传/下载文件脚本
 
 ##star_remind - 有人在github上star你的项目，立刻发送邮件提醒自己
 模拟登陆github + 抓取star动态 + 邮件发送
