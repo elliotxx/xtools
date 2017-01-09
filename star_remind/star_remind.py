@@ -8,10 +8,10 @@ from email.mime.text import MIMEText
 from email.header import Header
 
 timeout = 30                             # 超时时间
-charset = 'utf-8'               # 请求页面的编码格式
-subject = '【更新提示】'        # email 中的主题
-content = ''                    # email 中的内容
-isRenew = False                 # 是否有更新
+charset = 'utf-8'		# 请求页面的编码格式
+subject = '【更新提示】'	# email 中的主题
+content = ''			# email 中的内容
+isRenew = False			# 是否有更新
 record_file = os.path.join(sys.path[0],'record.dat')      # 记录文件
 conf_file = os.path.join(sys.path[0],'conf.ini')                # 配置文件
 renew_dict = {}                 # 更新记录
@@ -29,12 +29,12 @@ def send_email(sub,cont):
     subject = sub                       # 邮件主题
     smtpserver = 'smtp.qq.com'          # 邮箱服务器
     username = my_email                 # 用户名
-    password = my_password              # 授权码
+    password = my_password		# 授权码
 
-    msg = MIMEText(cont, 'html', 'utf8')        # 设置内容
-    msg['Subject'] = Header(subject, 'utf8')    # 设置主题
-    msg['From'] = sender                        # 设置发送方
-    msg['To'] = ','.join(receiver)              # 设置接收方
+    msg = MIMEText(cont, 'html', 'utf8')	# 设置内容
+    msg['Subject'] = Header(subject, 'utf8')	# 设置主题
+    msg['From'] = sender			# 设置发送方
+    msg['To'] = ','.join(receiver)		# 设置接收方
     smtp = smtplib.SMTP_SSL(smtpserver,465)
     #smtp.connect(smtpserver)
     smtp.login(username, password)
@@ -75,12 +75,11 @@ def Init():
     fp.close()
 
 
-
 def RenewCheck(key,src_url,des_url,pattern_str,charset):
     # 检查更新
     global subject,content,isRenew,renew_dict,github_username,github_password
     host = 'http://'+src_url.split('//')[1].split('/')[0]   # 检查网站的host地址
-    
+
     # 其它全局变量
     host = 'http://github.com'
     login_url = 'https://github.com/login'
@@ -126,12 +125,24 @@ def RenewCheck(key,src_url,des_url,pattern_str,charset):
     print '正在匹配star信息……'
     pattern = re.compile(r'<div class="alert watch_started simple">.*?<a.*?>(.*?)</a> starred <a href="/(.*?)/(.*?)"',re.S)
     items = re.findall(pattern,html)
-    items = items[0]
+
+    # 找到最近的star
+    isF = False
+    for item in items:
+        if item[1]==github_username:
+            isF = True
+            items = item
+            break
+    if not isF:
+        print '最近没有人star你的项目'
+        return
 
     # 清洗数据
     items = map(lambda x:x.strip(),items)
 
     # 输出解析结果
+    star_user = items[0].encode('utf8')
+    repo_name = items[2].encode('utf8')
     title = ' '.join(items)
     #print title
 
@@ -154,10 +165,11 @@ def RenewCheck(key,src_url,des_url,pattern_str,charset):
 
         print 'github上有新的star，发送邮件……'
         subject += '%s '%(key)
-        content += 'Github上刚刚有人star你的项目，赶紧去看吧：%s<br/>'%(des_url)
+        content += 'Github上 <strong>%s</strong> 刚刚star了你的项目 <strong>%s</strong> ，戳这里去看看：%s<br/>'%(star_user,repo_name,des_url)
     else:
         # 没有更新
         print '最近没有人star你的项目'
+
 
 def main():
     global subject,content,isRenew
@@ -174,11 +186,14 @@ def main():
             'utf8'\
             )   # github star
 
+
     if isRenew:
         send_email(subject+'有更新！',content)
+
 
 if __name__ == '__main__':
     try:
         main()
     except Exception,e:
         print '[ERROR]:%s'%e
+
